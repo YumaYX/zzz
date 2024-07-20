@@ -39,5 +39,5 @@ sphinx:
 	mkdir -p docs
 	. venv/bin/activate && sphinx-apidoc -fF -o ./docs ./zzz
 	git checkout -f docs
-	cd docs && make html
+	. venv/bin/activate && cd docs && make html
 
