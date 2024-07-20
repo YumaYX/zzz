@@ -2,7 +2,9 @@ PYTHON := python3
 PIP := pip3
 
 default:
-	@cat Makefile | grep ^.*: | grep -v :=
+	@cat Makefile | grep ^.*: | grep -v ":=" | grep -v "^\." | sort
+
+all: clean black test sphinx
 
 test:
 	$(PYTHON) -m unittest discover -s tests
@@ -17,7 +19,7 @@ clean:
 	find . | grep __pycache__ | xargs rm -rf
 	rm -rf zzz.egg-info/ venv/ docs/
 
-commit: test
+commit: test clean
 	git status
 	sleep 5
 	git add .
@@ -27,18 +29,19 @@ pub:
 	make commit
 	git push
 
-black:
+requirements:
 	$(PYTHON) -m venv venv
 	. venv/bin/activate && $(PIP) install -r requirements.txt
+
+black: requirements
+	make cformat
+cformat:
 	. venv/bin/activate && black zzz tests/test*
 
-sphinx:
-	$(PYTHON) -m venv venv
-	. venv/bin/activate && $(PIP) install -r requirements.txt
+sphinx: requirements
 	mkdir -p docs
 	. venv/bin/activate && sphinx-apidoc -fF -o ./docs ./zzz
 	make docs
-
 docs:
 	cp -v fordocs/* docs
 	. venv/bin/activate && cd docs && make html
