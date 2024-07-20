@@ -6,7 +6,7 @@ default:
 
 all: clean black test sphinx
 
-test:
+test: requirements
 	. venv/bin/activate && $(PYTHON) -m unittest discover -s tests
 
 install:
