@@ -15,7 +15,7 @@ installe:
 
 clean:
 	find . | grep __pycache__ | xargs rm -rf
-	rm -rf zzz.egg-info/ venv/
+	rm -rf zzz.egg-info/ venv/ docs/
 
 commit: test
 	git status
@@ -35,9 +35,12 @@ black:
 sphinx:
 	$(PYTHON) -m venv venv
 	. venv/bin/activate && $(PIP) install -r requirements.txt
-	rm -rf docs
 	mkdir -p docs
 	. venv/bin/activate && sphinx-apidoc -fF -o ./docs ./zzz
-	git checkout -f docs
+	make docs
+
+docs:
+	cp -v fordocs/* docs
 	. venv/bin/activate && cd docs && make html
 
+.PHONY: docs

@@ -15,8 +15,8 @@ def zzz():
 def block_text(file_name, head):
     """
     Reads a file and divides its content into blocks based on a specified heading.
-    
-    :param str file_name: The name of the file to read. 
+
+    :param str file_name: The name of the file to read.
     :param str head: The heading pattern to identify the start of a new block.
     :return: A list of Pac objects, each representing a block of text.
     :rtype: list
