@@ -37,7 +37,7 @@ sphinx:
 	. venv/bin/activate && $(PIP) install -r requirements.txt
 	rm -rf docs
 	mkdir -p docs
-	. venv/bin/activate && sphinx-apidoc -fF -o ./docs ./zzz
+	. venv/bin/activate && sphinx-apidoc -f -o ./docs ./zzz
 	git checkout -f docs
 	. venv/bin/activate && cd docs && make html
 
