@@ -11,3 +11,4 @@ zzz documentation
    :caption: Contents:
 
    zzz
+   zzz2

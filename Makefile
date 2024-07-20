@@ -7,7 +7,7 @@ default:
 all: clean black test sphinx
 
 test:
-	$(PYTHON) -m unittest discover -s tests
+	. venv/bin/activate && $(PYTHON) -m unittest discover -s tests
 
 install:
 	$(PIP) install .
@@ -17,7 +17,7 @@ installe:
 
 clean:
 	find . | grep __pycache__ | xargs rm -rf
-	rm -rf zzz.egg-info/ venv/ docs/
+	rm -rf zzz.egg-info/ docs/
 
 commit: test clean
 	git status
@@ -36,11 +36,12 @@ requirements:
 black: requirements
 	make cformat
 cformat:
-	. venv/bin/activate && black zzz tests/test*
+	. venv/bin/activate && black zzz zzz2 tests/test*
 
 sphinx: requirements
 	mkdir -p docs
 	. venv/bin/activate && sphinx-apidoc -fF -o ./docs ./zzz
+	. venv/bin/activate && sphinx-apidoc -F  -o ./docs ./zzz2
 	make docs
 docs:
 	cp -v fordocs/* docs
