@@ -1,36 +1,29 @@
 class Pac:
     """
-    A class to represent a block of text with a key and associated values.
-
-    Attributes:
-        key (str): The key or heading of the block.
-        values (list): A list of values or lines associated with the key.
+    Represents a Pac object that stores a key and a list of values.
     """
 
     def __init__(self, key):
         """
-        Initializes a new instance of the Pac class.
+        Initialize a Pac object with a key and an empty list of values.
 
-        Args:
-            key (str): The key or heading of the block.
+        :param key: The key associated with the Pac object.
         """
         self.key = key
         self.values = []
 
     def push(self, element):
         """
-        Adds a new element to the block's values.
+        Add an element to the list of values.
 
-        Args:
-            element (str): The element to add to the values list.
+        :param element: The element to be added to the values list.
         """
         self.values.append(element)
 
     def pac(self):
         """
-        Returns the block's key and values as a list.
+        Return a list containing the key followed by the list of values.
 
-        Returns:
-            list: A list containing the key followed by the values.
+        :return: A list containing the key and all values stored.
         """
         return [self.key] + self.values

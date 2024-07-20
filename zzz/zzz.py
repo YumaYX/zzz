@@ -6,8 +6,8 @@ def zzz():
     """
     Returns a string representing the sound of sleeping.
 
-    Returns:
-        str: The sound "Zzz..."
+    :return: The sound "Zzz..."
+    :rtype: str
     """
     return "Zzz..."
 
@@ -15,13 +15,11 @@ def zzz():
 def block_text(file_name, head):
     """
     Reads a file and divides its content into blocks based on a specified heading.
-
-    Args:
-        file_name (str): The name of the file to read.
-        head (str): The heading pattern to identify the start of a new block.
-
-    Returns:
-        list: A list of Pac objects, each representing a block of text.
+    
+    :param str file_name: The name of the file to read. 
+    :param str head: The heading pattern to identify the start of a new block.
+    :return: A list of Pac objects, each representing a block of text.
+    :rtype: list
     """
     blocks = []
 
