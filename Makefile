@@ -29,12 +29,12 @@ pub:
 
 black:
 	$(PYTHON) -m venv venv
-	source venv/bin/activate && $(PIP) install -r requirements.txt
-	source venv/bin/activate && black zzz tests/test*
+	. venv/bin/activate && $(PIP) install -r requirements.txt
+	. venv/bin/activate && black zzz tests/test*
 
 sphinx:
 	$(PYTHON) -m venv venv
-	source venv/bin/activate && $(PIP) install -r requirements.txt
+	. venv/bin/activate && $(PIP) install -r requirements.txt
 	rm -rf docs
 	sphinx-apidoc -fF -o ./docs ./zzz
 	git checkout -f docs
